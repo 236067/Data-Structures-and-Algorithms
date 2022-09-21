@@ -1,0 +1,20 @@
+class Solution {
+    public int[][] multiply(int[][] a, int[][] b) {
+        int n = a.length;
+        int m = b[0].length;
+        int k = a[0].length;
+        int[][] ans = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int c = 0; c < k; c++) { 
+                if (a[i][c] == 0) { 
+                    continue; 
+                }
+                for (int j = 0; j < m; j++) {
+                    ans[i][j] += a[i][c] * b[c][j];
+                }
+            }
+        }
+        return ans;
+    }
+}
