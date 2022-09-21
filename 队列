@@ -1,1 +1,54 @@
+public class Array_queue {
+    private int[]mass;
+    private int maxsize;
+    private int front;
+    private int real;
+    public Array_queue(int size) {
+        this.mass=new int[size];
+        this.maxsize=size;
+        this.front=-1;
+        this.real=-1;
+    }
+
+    public void getQueue(int n){
+        if(isFull()){
+            throw new RuntimeException("队列满了");
+        }
+        real++;
+        mass[real]=n;
+    }
+    public void setQueue(){
+        if(isEmpt()){
+            throw new RuntimeException("队列为空");
+        }
+        front++;
+        System.out.println(mass[front]);
+    }
+
+    public boolean isFull(){
+        return real==maxsize-1;
+    }
+    public boolean isEmpt(){
+        return real==front;
+    }
+
+    public void showQueue(){
+        if(isEmpt()){
+            System.out.println("空");
+            return;
+        }
+        for (int i:mass){
+            System.out.printf("%d\t",i);
+        }
+
+    }
+    public void head(){
+        if(isEmpt()){
+            System.out.println("空");
+            return;
+        }
+        System.out.println(mass[front+1]);
+    }
+
+}
 
