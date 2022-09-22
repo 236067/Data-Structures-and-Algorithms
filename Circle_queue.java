@@ -4,7 +4,7 @@ public class Circle_queue {
         private int front;
         private int real;
         public Circle_queue(int size) {
-            this.mass=new int[size+1];
+            this.mass=new int[size];
             this.maxsize=size;
             this.front=0;
             this.real=0;
