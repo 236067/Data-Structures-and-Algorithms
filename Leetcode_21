@@ -33,7 +33,7 @@ public class Leetcode_21 {
             if (p2 == null) {
                 p.next = p1;
             }
-            return pl;
+            return pl.next;
         }
     }
 }
