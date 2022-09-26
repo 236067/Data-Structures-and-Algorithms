@@ -1,0 +1,139 @@
+public class Singlelinkedlist {
+    public static void main(String[] args) {
+
+        Linkedlist note1=new Linkedlist("1",1,"1");
+        Linkedlist note2=new Linkedlist("2",2,"2");
+        Linkedlist note3=new Linkedlist("3",3,"3");
+        Linkedlist note4=new Linkedlist("4",4,"4");
+
+        Linked linkedlist=new Linked();
+        Linkedlist note5=new Linkedlist("5",5,"5");
+        linkedlist.addByOrder(note1);
+        linkedlist.addByOrder(note3);
+        linkedlist.addByOrder(note2);
+        linkedlist.addByOrder(note4);
+        linkedlist.update(note5);
+        linkedlist.del(1);
+        linkedlist.outPut();
+
+
+    }
+
+    static class Linked{
+        Linkedlist head=new Linkedlist(null,1,null);
+        public void add(Linkedlist note){
+            Linkedlist temp=head;
+            while(true){
+             if(temp.next==null){
+                 temp.next=note;
+                 break;
+             }
+             temp=temp.next;
+            }
+        }
+
+        public void headQueue(Linkedlist note){
+            Linkedlist temp=head;
+            if(temp.next==null){
+                System.out.println("链表为空");
+                return;
+            }
+            while(true){
+                if(temp==null){
+                    break;
+                }
+                System.out.println(temp);
+                temp=temp.next;
+            }
+
+
+        }
+        public void update(Linkedlist note){
+            Linkedlist temp=head;
+
+            if(head.next==null){
+                System.out.println("空");
+            }
+
+            while(true){
+                if(temp.next.no==note.no){
+                    temp.next.name=note.name;
+                    temp.next.nickName=note.nickName;
+                    break;
+                }
+                if(temp.next.next==null){
+                    System.out.println("不存在这个NO");
+                    break;
+                }
+                temp=temp.next;
+            }
+        }
+        public void del(int no){
+            Linkedlist temp=head;
+            if(head.next==null){
+                System.out.println("空");
+            }
+            while(true){
+                if(temp.next.no==no){
+                    temp.next=temp.next.next;
+                    break;
+                }
+                if(temp.next.next==null){
+                    System.out.println("不存在这个NO");
+                    break;
+                }
+                temp=temp.next;
+            }
+        }
+        public void outPut(){
+            Linkedlist temp=head;
+            while(true){
+                temp=temp.next;
+                if(temp==null){
+                    break;
+                }
+                System.out.println(temp);
+            }
+        }
+        public void addByOrder(Linkedlist note){
+            Linkedlist temp=head;
+            while(true){
+                if(temp.next==null){
+                    temp.next=note;
+                    break;
+                }
+                else if(temp.next.no==note.no){
+                    break;
+                }else if (temp.no<note.no&&temp.next.no> note.no){
+                    note.next=temp.next;
+                    temp.next=note;
+                    break;
+                }
+                temp=temp.next;
+            }
+        }
+
+    }
+
+    static class Linkedlist{
+
+       private String name;
+       private int no;
+       private String nickName;
+       private Linkedlist next;
+       public Linkedlist(String name,int no,String nickName){
+           this.name=name;
+           this.no=no;
+           this.nickName=nickName;
+       }
+
+        @Override
+        public String toString() {
+            return "Linkedlist{" +
+                    "name='" + name + '\'' +
+                    ", no=" + no +
+                    ", nickName='" + nickName + '\'' +
+                    '}';
+        }
+    }
+}
